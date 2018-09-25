@@ -1,7 +1,7 @@
 /* #6 start the #external #action and say hello */
 console.log("App is alive");
 
-var currentChannel = sevenContinents;
+var currentChannel = SevenContinents;
 var currentLocation = {
     latitude: 48.186948,
     longitude: 11.574883,
