@@ -91,31 +91,53 @@ function sendMessage() {
 
 function createMessageElement(messageObject) {
     var expiresIn = Math.round((messageObject.expiresOn - Date.now()) / 60000);
-    var options = {timezone:'MESZ'};
-    var classes = messageObject.own?'message own':'message';
-    return '<div class="'+classes+'"><h3><a href="http://w3w.co/' + messageObject.createdBy + '" target="_blank"><strong>' +
+    var options = {
+        timezone: 'MESZ'
+    };
+    var classes = messageObject.own ? 'message own' : 'message';
+    return '<div class="' + classes + '"><h3><a href="http://w3w.co/' + messageObject.createdBy + '" target="_blank"><strong>' +
         messageObject.createdBy + '</strong></a>' + new Date(messageObject.createdOn).toLocaleString('de-DE', options) +
         '<em>' + expiresIn + ' min. left</em></h3><p>' + messageObject.text + '</p><button>+5 min.</button><div>';
 }
 
-function listChannels(){
-  createChannelElement(Yummy);
-  createChannelElement(SevenContinents);
-  createChannelElement(KillerApp);
-  createChannelElement(FirstPersonOnMars);
-  createChannelElement(Octoberfest);
+function listChannels() {
+    createChannelElement(Yummy);
+    createChannelElement(SevenContinents);
+    createChannelElement(KillerApp);
+    createChannelElement(FirstPersonOnMars);
+    createChannelElement(Octoberfest);
 
 }
 
 function createChannelElement(channelObject) {
-  console.log(channelObject);
-  var starClasses;
-  starClasses = channelObject.starred?'fas fa-star':'far fa-star';
-  var liAttr;
-  if (channelObject.name == 'SevenContinents'){
-    liAttr={'onclick':'switchChannel(' + channelObject.name+')','class':'selected'};
-  } else {
-    liAttr = {'onclick':'switchChannel(' + channelObject.name+')'};
-  }
-  $('<li>').attr(liAttr).html('#'+channelObject.name).append($('<span>').attr('class','channel-meta').append($('<i>').attr('class',starClasses)).append($('<i>').attr('class','fas fa-chevron-right'))).appendTo('#channel-list');
+    console.log(channelObject);
+    var starClasses;
+    starClasses = channelObject.starred ? 'fas fa-star' : 'far fa-star';
+    var liAttr;
+    if (channelObject.name == 'SevenContinents') {
+        liAttr = {
+            'onclick': 'switchChannel(' + channelObject.name + ')',
+            'class': 'selected'
+        };
+    } else {
+        liAttr = {
+            'onclick': 'switchChannel(' + channelObject.name + ')'
+        };
+    }
+    var boxesStyle = {
+        'background-color': '#3F51B5',
+        'font-size': 'small',
+        'color': 'white',
+        'padding': '2px 4px',
+        'margin': '2px',
+        'border-radius': '2px',
+    };
+
+    var parentBoxesStyle = {
+        'display': 'flex',
+        'align-items': 'center'
+    };
+
+    $('<li>').attr(liAttr).html('#' + channelObject.name).append($('<span>').attr('class', 'channel-meta').css(parentBoxesStyle).append($('<i>').attr('class', starClasses)).append($('<span>' + channelObject.expiresIn + ' min</span>')
+        .css(boxesStyle)).append($('<span>' + channelObject.messageCount + ' new</span>').css(boxesStyle)).append($('<i>').attr('class', 'fas fa-chevron-right'))).appendTo('#channel-list');
 }
