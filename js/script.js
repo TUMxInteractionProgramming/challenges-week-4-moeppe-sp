@@ -1,19 +1,13 @@
 /* #6 start the #external #action and say hello */
 console.log("App is alive");
 
-var currentChannel = {
-    name: 'SevenContinents',
-    createdOn: new Date('April 1, 2016'),
-    createdBy: 'minus.plus.yummy',
-    starred: true,
-    expiresIn: 100,
-    messageCount: 999,
-};
+var currentChannel = sevenContinents;
 var currentLocation = {
     latitude: 48.186948,
     longitude: 11.574883,
     what3words: 'schwellen.zeit.lippe'
 };
+var currentMessage;
 
 /**
  * #6 #Switcher function for the #channels name in the right app bar
@@ -31,7 +25,7 @@ function switchChannel(channelObject) {
     document.getElementById('channel-location').innerHTML = 'by <a href="http://w3w.co/' + channelObject.createdBy + '" target="_blank"><strong>' + channelObject.createdBy + '</strong></a>';
 
     /* #6 #liking channels on #click */
-    let typeOfStar = channelObject.starred ? 'fas' : 'far';
+    var typeOfStar = channelObject.starred ? 'fas' : 'far';
     $('#channel-star').removeClass("fas far");
     $('#channel-star').addClass(typeOfStar);
     //$('#channel-star').attr('src', 'http://ip.lfe.mw.tum.de/sections/star-o.png');
@@ -74,4 +68,54 @@ function selectTab(tabId) {
 function toggleEmojis() {
     /* $('#emojis').show(); // #show */
     $('#emojis').toggle(); // #toggle
+}
+
+function Message(text) {
+    this.createdBy = currentLocation.what3words;
+    this.latitude = currentLocation.latitude;
+    this.longitude = currentLocation.longitude;
+    this.createdOn = Date.now();
+    this.expiresOn = new Date(Date.now() + 15 * 60000);
+    this.text = text;
+    this.own = true;
+}
+
+function sendMessage() {
+    var message = new Message($('#message-input').val());
+    currentMessage = message;
+    console.log(message);
+    $('#messages').append(createMessageElement(message));
+    $('#messages').scrollTop($('#messages')[0].scrollHeight);
+    $('#message-input').val('');
+}
+
+function createMessageElement(messageObject) {
+    var expiresIn = Math.round((messageObject.expiresOn - Date.now()) / 60000);
+    var options = {timezone:'MESZ'};
+    var classes = messageObject.own?'message own':'message';
+    return '<div class="'+classes+'"><h3><a href="http://w3w.co/' + messageObject.createdBy + '" target="_blank"><strong>' +
+        messageObject.createdBy + '</strong></a>' + new Date(messageObject.createdOn).toLocaleString('de-DE', options) +
+        '<em>' + expiresIn + ' min. left</em></h3><p>' + messageObject.text + '</p><button>+5 min.</button><div>';
+}
+
+function listChannels(){
+  createChannelElement(Yummy);
+  createChannelElement(SevenContinents);
+  createChannelElement(KillerApp);
+  createChannelElement(FirstPersonOnMars);
+  createChannelElement(Octoberfest);
+
+}
+
+function createChannelElement(channelObject) {
+  console.log(channelObject);
+  var starClasses;
+  starClasses = channelObject.starred?'fas fa-star':'far fa-star';
+  var liAttr;
+  if (channelObject.name == 'SevenContinents'){
+    liAttr={'onclick':'switchChannel(' + channelObject.name+')','class':'selected'};
+  } else {
+    liAttr = {'onclick':'switchChannel(' + channelObject.name+')'};
+  }
+  $('<li>').attr(liAttr).html('#'+channelObject.name).append($('<span>').attr('class','channel-meta').append($('<i>').attr('class',starClasses)).append($('<i>').attr('class','fas fa-chevron-right'))).appendTo('#channel-list');
 }

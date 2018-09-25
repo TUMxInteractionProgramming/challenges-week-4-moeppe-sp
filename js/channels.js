@@ -1,4 +1,4 @@
-var yummy = {
+var Yummy = {
     name: 'Yummy',
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
@@ -7,7 +7,7 @@ var yummy = {
     messageCount: 999,
 };
 
-var sevenContinents = {
+var SevenContinents = {
     name: 'SevenContinents',
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
@@ -16,7 +16,7 @@ var sevenContinents = {
     messageCount: 999,
 };
 
-var killerApp = {
+var KillerApp = {
     name: 'KillerApp',
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
@@ -25,7 +25,7 @@ var killerApp = {
     messageCount: 999,
 };
 
-var firstPersonOnMars = {
+var FirstPersonOnMars = {
     name: 'FirstPersonOnMars',
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
@@ -34,7 +34,7 @@ var firstPersonOnMars = {
     messageCount: 999,
 };
 
-var octoberfest = {
+var Octoberfest = {
     name: 'Octoberfest',
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
