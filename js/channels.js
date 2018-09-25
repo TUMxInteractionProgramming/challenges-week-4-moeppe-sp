@@ -12,8 +12,8 @@ var SevenContinents = {
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
     starred: true,
-    expiresIn: 100,
-    messageCount: 999,
+    expiresIn: 60,
+    messageCount: 5,
 };
 
 var KillerApp = {
@@ -21,8 +21,8 @@ var KillerApp = {
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
     starred: false,
-    expiresIn: 100,
-    messageCount: 999,
+    expiresIn: 1,
+    messageCount: 10351,
 };
 
 var FirstPersonOnMars = {
@@ -30,8 +30,8 @@ var FirstPersonOnMars = {
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
     starred: true,
-    expiresIn: 100,
-    messageCount: 999,
+    expiresIn: 30003,
+    messageCount: 2424,
 };
 
 var Octoberfest = {
@@ -39,6 +39,6 @@ var Octoberfest = {
     createdOn: new Date('April 1, 2016'),
     createdBy: 'minus.plus.yummy',
     starred: false,
-    expiresIn: 100,
-    messageCount: 999,
+    expiresIn: 60,
+    messageCount: 321,
 };
