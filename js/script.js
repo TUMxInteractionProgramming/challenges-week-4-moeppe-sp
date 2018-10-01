@@ -82,6 +82,9 @@ function Message(text) {
 
 function sendMessage() {
     var message = new Message($('#message-input').val());
+    if (message.text==''){
+      alert('Please enter a message before sending!');
+    }
     currentMessage = message;
     console.log(message);
     $('#messages').append(createMessageElement(message));
@@ -97,7 +100,7 @@ function createMessageElement(messageObject) {
     var classes = messageObject.own ? 'message own' : 'message';
     return '<div class="' + classes + '"><h3><a href="http://w3w.co/' + messageObject.createdBy + '" target="_blank"><strong>' +
         messageObject.createdBy + '</strong></a>' + new Date(messageObject.createdOn).toLocaleString('de-DE', options) +
-        '<em>' + expiresIn + ' min. left</em></h3><p>' + messageObject.text + '</p><button>+5 min.</button><div>';
+        '<em>' + expiresIn + ' min. left</em></h3><p style="box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);">' + messageObject.text + '</p><button class="accent">+5 min.</button><div>';
 }
 
 function listChannels() {

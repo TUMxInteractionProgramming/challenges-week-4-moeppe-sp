@@ -25,6 +25,19 @@ button, strong {
     text-transform: uppercase;
 }
 
+button {
+    padding: 0 16px;
+    margin: 8px;
+    background-color: white;
+    border: 0;
+    color: #3F51B5;
+    text-transform: uppercase;
+    height: 36px;
+    min-width: 64px;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
 /* LAYOUT #5 #split */
 #channels {
     /* #5 #split #left align the channels */
@@ -68,9 +81,11 @@ h1 {
     /* we need this, so that the image's absolute position is relative to the app bar */
 }
 
+
 h1#left-app-bar {
     /* #5 LEFT-APP-BAR spacing */
     padding-left: 72px;
+    z-index: 1;
 }
 
 h1#left-app-bar img {
@@ -87,10 +102,13 @@ h1 a {
 
 h1 #channel-star {
     /* #6 #liking #filled  */
-    position: absolute;
-    right: 16px;
     font-size: 24px;
-    bottom: 20px;
+}
+
+h1 button {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
 }
 
 /* CHANNELS LIST */
@@ -146,16 +164,19 @@ li.selected {
     width: 100%;
     /* #5 #tab-bar #flexify the buttons*/
     display: flex;
+    height: 72px;
+    align-items: center;
+}
+#tab-bar{
+  z-index: 1;
 }
 
 /* #5 #smileys #lazy: we can reuse most of the tab-bar buttons' styles for the chat-bar buttons */
-#tab-bar button, #chat-bar button {
-    background-color: white;
+#tab-bar button {
     border: none;
-    font-size: 13px;
     width: 33%;
     height: 72px;
-    padding: 16px;
+    margin: 0;
     /* #5 #tab-bar #flexify the buttons by growing them equally */
     flex-grow: 1;
 }
@@ -205,8 +226,7 @@ li.selected {
 }
 
 #send-message .fa-arrow-right {
-  font-size: 24px;
-
+    font-size: 24px;
 }
 
 /* MESSAGES */
@@ -246,26 +266,94 @@ li.selected {
 .message p {
     background-color: white;
     padding: 16px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
+
 .message button {
-    /* +5 min. button*/
-    background-color: #CDDC39;
-    color: black;
-    text-transform: uppercase;
     /* #5 #messages #reposition right/bottom alignment of button */
     position: absolute;
-    right: 8px;
-    bottom: 8px;
+    right: 0;
+    bottom: 0;
 }
 
 .message.own {
-    margin-left: 17.5%;
+    margin-left: calc(20% - 20px);
 }
 
-#message-input{
-  border: none;
-  font-size: 16px;
-  flex-grow: 1;
-  width: 100%;
+#message-input {
+    border: none;
+    font-size: 16px;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.primary {
+    background-color: #3F51B5;
+    color: white;
+}
+
+.accent {
+    background-color: #CDDC39;
+    color: black;
+}
+
+button.accent:hover {
+    background-color: #9ba91e;
+}
+
+button.primary:hover {
+    background-color: #2c387d;
+}
+
+button:focus{
+  outline: 0;
+}
+input:focus{
+  outline: 0;
+}
+
+#fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 88px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#fab p {
+  font-size: 30px;
+
+}
+
+.shadow--2dp {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.shadow--3dp {
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
+}
+
+.shadow--4dp {
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.shadow--6dp {
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+.shadow--8dp {
+    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+.shadow--16dp {
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.shadow--24dp {
+    box-shadow: 0 9px 46px 8px rgba(0, 0, 0, 0.14), 0 11px 15px -7px rgba(0, 0, 0, 0.12), 0 24px 38px 3px rgba(0, 0, 0, 0.2);
 }
