@@ -81,7 +81,6 @@ h1 {
     /* we need this, so that the image's absolute position is relative to the app bar */
 }
 
-
 h1#left-app-bar {
     /* #5 LEFT-APP-BAR spacing */
     padding-left: 72px;
@@ -167,8 +166,9 @@ li.selected {
     height: 72px;
     align-items: center;
 }
-#tab-bar{
-  z-index: 1;
+
+#tab-bar {
+    z-index: 1;
 }
 
 /* #5 #smileys #lazy: we can reuse most of the tab-bar buttons' styles for the chat-bar buttons */
@@ -223,17 +223,19 @@ li.selected {
 
 #emojis-button .fa-smile {
     font-size: 24px;
+    justify-content: flex-start;
 }
 
 #send-message .fa-arrow-right {
     font-size: 24px;
+    justify-content: flex-end;
 }
 
 /* MESSAGES */
 .message {
     width: 80%;
     margin-bottom: 8px;
-    margin-left: 2.5%;
+    margin-left: 20px;
     /* #5 #messages #reposition right/bottom alignment of button relative to the chat message (stops absolute) */
     position: relative;
 }
@@ -268,7 +270,6 @@ li.selected {
     padding: 16px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
-
 
 .message button {
     /* #5 #messages #reposition right/bottom alignment of button */
@@ -306,28 +307,53 @@ button.primary:hover {
     background-color: #2c387d;
 }
 
-button:focus{
-  outline: 0;
+button:focus {
+    outline: 0;
 }
-input:focus{
-  outline: 0;
+
+input:focus {
+    outline: 0;
 }
 
 #fab {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 88px;
-  right: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 88px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #fab p {
-  font-size: 30px;
+    font-size: 30px;
+}
 
+.message:not(.own) p::before {
+    content: ' ';
+    display: inline-block;
+    position: absolute;
+    left: -20px;
+    top: 23px;
+    width: 0;
+    height: 0;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid white;
+
+}
+
+.own p::after {
+    content: ' ';
+    display: inline-block;
+    position: absolute;
+    right:  -20px;
+    top: 23px;
+    width: 0;
+    height: 0;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid white;
 }
 
 .shadow--2dp {
